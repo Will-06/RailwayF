@@ -53,10 +53,10 @@ use App\Services\Impl\{
 };
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
-
     public function register(): void
     {
         $this->app->bind(AnnouncementService::class, AnnouncementServiceImpl::class);
@@ -87,6 +87,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Forzar HTTPS en producción
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
