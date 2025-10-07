@@ -6,7 +6,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'], // Temporalmente abierto, ideal para pruebas con Android
+    'allowed_origins' => ['*'],  // Temporalmente abierto, ideal para pruebas con Android
 
     'allowed_origins_patterns' => [],
 

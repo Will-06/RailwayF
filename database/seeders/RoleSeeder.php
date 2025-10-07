@@ -13,11 +13,18 @@ class RoleSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {        
-        DB::table('roles')->insert([
+    {
+        $roles = [
             ['name' => 'super_admin', 'display_name' => 'Super Administrador'],
             ['name' => 'admin', 'display_name' => 'Administrador'],
             ['name' => 'cliente', 'display_name' => 'Cliente'],
-        ]);
+        ];
+    
+        foreach ($roles as $role) {
+            Role::updateOrCreate(
+                ['name' => $role['name']], // Busca por 'name'
+                ['display_name' => $role['display_name']] // Actualiza o inserta
+            );
+        }
     }
-}
+}    
